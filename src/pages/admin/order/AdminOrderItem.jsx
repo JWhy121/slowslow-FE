@@ -28,7 +28,7 @@ function AdminOrderItem({
     const handleChange = async (event) => {
         setValue(event.target.value);
 
-        const url = `http://34.47.79.214:8080/admin/orders/${orderId}?status=${event.target.value}`;
+        const url = `http://localhost:8080/admin/orders/${orderId}?status=${event.target.value}`;
         try {
             const response = await fetch(url, {
                 method: 'PUT',
@@ -113,7 +113,7 @@ function AdminOrderItem({
     // 삭제 버튼 클릭 핸들러
     const orderDeleteHandler = async () => {
         // delete api. 상태를 CANCELLED로 변경.
-        const url = `http://34.47.79.214:8080/admin/orders/${orderId}`;
+        const url = `http://localhost:8080/admin/orders/${orderId}`;
         try {
             const response = await fetch(url, {
                 method: 'DELETE',

@@ -71,7 +71,7 @@ const OrderPage = () => {
                 const storedToken = localStorage.getItem('token');
 
                 if (storedToken) {
-                    const response = await axios.get('http://34.47.79.214:8080/api/v1/mypage', {
+                    const response = await axios.get('http://localhost:8080/api/v1/mypage', {
                         headers: {
                             Authorization: `${storedToken}`,
                         },
@@ -174,7 +174,7 @@ const OrderPage = () => {
 
         try {
             const response = await axios.post(
-                `http://34.47.79.214:8080/orders?paymentConfirmed=true&agreementConfirmed=true`,
+                `http://localhost:8080/orders?paymentConfirmed=true&agreementConfirmed=true`,
                 orderData,
                 {
                     headers: {

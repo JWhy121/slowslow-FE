@@ -82,7 +82,7 @@ function Cart() {
 
     // 백엔드 서버에서 제품 정보를 가져오는 함수
     const fetchProductDetails = async (productId) => {
-        const response = await fetch(`http://34.47.79.214:8080/product/${productId}`);
+        const response = await fetch(`http://localhost:8080/product/${productId}`);
         const data = await response.json();
         return data;
     };

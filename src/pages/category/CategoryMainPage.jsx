@@ -12,7 +12,7 @@ const CategoryMainPage = () => {
 
     useEffect(() => {
         // 카테고리 정보 가져오기
-        fetch(`http://34.47.79.214:8080/category/all`)
+        fetch(`http://localhost:8080/category/all`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -31,7 +31,7 @@ const CategoryMainPage = () => {
             });
 
         // 해당 카테고리 또는 전체 상품 정보 가져오기
-        fetch(categoryId ? `http://34.47.79.214:8080/category/${categoryId}` : `http://34.47.79.214:8080/product/all`)
+        fetch(categoryId ? `http://localhost:8080/category/${categoryId}` : `http://localhost:8080/product/all`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

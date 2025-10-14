@@ -25,14 +25,14 @@ const CategoryListAdmin = () => {
     const [categoryToEdit, setCategoryToEdit] = useState(null);
 
     useEffect(() => {
-        fetch('http://34.47.79.214:8080/category/all')
+        fetch('http://localhost:8080/category/all')
             .then((response) => response.json())
             .then((data) => setCategories(data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
     const handleAddCategory = (categoryName) => {
-        fetch('http://34.47.79.214:8080/admin/category/post', {
+        fetch('http://localhost:8080/admin/category/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const CategoryListAdmin = () => {
     };
 
     const handleUpdateCategory = (categoryName) => {
-        fetch(`http://34.47.79.214:8080/admin/category/edit/${categoryToEdit.id}`, {
+        fetch(`http://localhost:8080/admin/category/edit/${categoryToEdit.id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const CategoryListAdmin = () => {
     };
 
     const handleDeleteCategory = () => {
-        fetch(`http://34.47.79.214:8080/admin/category/delete/${deleteCategoryId}`, {
+        fetch(`http://localhost:8080/admin/category/delete/${deleteCategoryId}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `${localStorage.getItem('token')}`,

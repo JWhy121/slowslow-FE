@@ -48,7 +48,7 @@ const OrderDetail = () => {
         console.log('Stored Token:', storedToken); // 토큰 값을 콘솔에 출력
         if (storedToken) {
             axios
-                .get(`http://34.47.79.214:8080/api/v1/mypage/orders/${orderId}`, {
+                .get(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, {
                     // URL에 /api/v1 추가
                     headers: {
                         'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const OrderDetail = () => {
         }
 
         try {
-            const response = await axios.delete(`http://34.47.79.214:8080/api/v1/mypage/orders/${orderId}`, {
+            const response = await axios.delete(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `${storedToken}`,
@@ -130,7 +130,7 @@ const OrderDetail = () => {
         }
 
         try {
-            const response = await axios.put(`http://34.47.79.214:8080/api/v1/mypage/orders/${orderId}`, formData, {
+            const response = await axios.put(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `${storedToken}`,

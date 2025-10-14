@@ -31,7 +31,7 @@ const Home = () => {
     useEffect(() => {
         const fetchLatestProducts = async () => {
             try {
-                const response = await fetch('http://34.47.79.214:8080/product/latest');
+                const response = await fetch('http://localhost:8080/product/latest');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -48,7 +48,7 @@ const Home = () => {
     useEffect(() => {
         const fetchModifiedProducts = async () => {
             try {
-                const response = await fetch('http://34.47.79.214:8080/product/modify');
+                const response = await fetch('http://localhost:8080/product/modify');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

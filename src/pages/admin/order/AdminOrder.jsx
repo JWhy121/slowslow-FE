@@ -32,7 +32,7 @@ function AdminOrder() {
         // 로딩 시작
         setIsLoading(true);
 
-        const response = await fetch(`http://34.47.79.214:8080/admin/orders`);
+        const response = await fetch(`http://localhost:8080/admin/orders`);
         const data = await response.json();
 
         console.log(data);

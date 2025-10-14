@@ -2,7 +2,7 @@
     "name": "slowslow-fe",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://34.47.79.214:8080",
+    "proxy": "http://localhost:8080",
     "dependencies": {
         "@chakra-ui/react": "^2.8.2",
         "@emotion/react": "^11.11.4",

@@ -29,7 +29,7 @@ const Header = () => {
     };
 
     useEffect(() => {
-        fetch('http://34.47.79.214:8080/category/all')
+        fetch('http://localhost:8080/category/all')
             .then((response) => response.json())
             .then((data) => setCategories(data))
             .catch((error) => console.error('Error fetching data:', error));

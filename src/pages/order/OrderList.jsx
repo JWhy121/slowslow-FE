@@ -46,7 +46,7 @@ const OrderList = () => {
         console.log('Stored Token:', storedToken);
         if (storedToken) {
             axios
-                .get('http://34.47.79.214:8080/api/v1/mypage/orders', {
+                .get('http://localhost:8080/api/v1/mypage/orders', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `${storedToken}`,

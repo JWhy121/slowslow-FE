@@ -46,7 +46,7 @@ const PasswordCheckForm = () => {
 
             const userToken = localStorage.getItem('token');
             const response = await axios.post(
-                'http://34.47.79.214:8080/api/v1/checkPasswordForUpdate',
+                'http://localhost:8080/api/v1/checkPasswordForUpdate',
                 { password },
                 {
                     headers: {

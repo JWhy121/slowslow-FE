@@ -40,7 +40,7 @@ const PasswordCheckForm = () => {
 
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                'http://34.47.79.214:8080/api/v1/checkPasswordForDelete',
+                'http://localhost:8080/api/v1/checkPasswordForDelete',
                 { password },
                 { headers: { Authorization: `${token}` } }
             );
