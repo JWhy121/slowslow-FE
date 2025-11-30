@@ -54,6 +54,7 @@ const OrderList = () => {
                 })
                 .then((response) => {
                     const data = response.data;
+                    console.log('response.data:', response.data);
                     const sortedData = data.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
                     setOrders(sortedData);
                 })

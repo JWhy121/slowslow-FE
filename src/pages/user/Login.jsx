@@ -34,6 +34,10 @@ const Login = () => {
         navigate('/membership');
     };
 
+    const handleKakaoLogin = async () => {
+        window.location.href = 'http://localhost:8080/api/auth/kakao/login';
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -85,7 +89,7 @@ const Login = () => {
             >
                 <h2>로그인</h2>
                 <form onSubmit={handleSubmit}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2 }}>
+                    <Box sx={{ alignItems: 'flex-end', mb: 2 }}>
                         <TextField
                             sx={{ width: 400, color: '#586555' }}
                             id="input-with-sx"
@@ -97,7 +101,7 @@ const Login = () => {
                             name="username"
                         />
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2 }}>
+                    <Box sx={{ alignItems: 'flex-end', mb: 2 }}>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">비밀번호</InputLabel>
                             <OutlinedInput
@@ -124,22 +128,44 @@ const Login = () => {
                         </FormControl>
                     </Box>
                     {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{
-                            mb: 2,
-                            height: 50,
-                            width: 400,
-                            backgroundColor: '#586555',
-                            borderRadius: '10px',
-                            '&:hover': {
+
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            sx={{
+                                mb: 2,
+                                height: 50,
+                                width: 400,
                                 backgroundColor: '#586555',
-                            },
-                        }}
-                    >
-                        로그인
-                    </Button>
+                                borderRadius: '10px',
+                                '&:hover': {
+                                    backgroundColor: '#586555',
+                                },
+                            }}
+                        >
+                            로그인
+                        </Button>
+                        {/* ✅ 카카오 로그인 버튼 추가 */}
+                        <Button
+                            onClick={handleKakaoLogin}
+                            sx={{
+                                mb: 2,
+                                height: 50,
+                                width: 400,
+                                backgroundColor: '#FEE500',
+                                color: '#3C1E1E',
+                                fontWeight: 'bold',
+                                borderRadius: '10px',
+                                '&:hover': {
+                                    backgroundColor: '#FDD835',
+                                },
+                            }}
+                        >
+                            카카오 로그인
+                        </Button>
+                    </Box>
+                    {/* 기본 로그인 버튼 */}
                 </form>
                 <Button
                     sx={{ height: 50, width: 400, color: '#586555', border: '2px solid #586555', borderRadius: '10px' }}
