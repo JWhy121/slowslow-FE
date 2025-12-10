@@ -57,15 +57,17 @@ const OrderDetail = () => {
                 })
                 .then((response) => {
                     const data = response.data;
+                    console.log('Order Data:', data); // 응답 데이터를 콘솔에 출력
+                    console.log('Order Details:', data.delivery.receiverAddr); // orderDetails 출력
                     setOrder(data);
                     setFormData({
-                        orderName: data.orderName,
-                        orderTel: data.orderTel,
+                        orderName: data.delivery.receiverName,
+                        orderTel: data.delivery.receiverTel,
                         orderEmail: data.orderEmail,
-                        shipName: data.shipName,
-                        shipTel: data.shipTel,
-                        shipAddr: data.shipAddr,
-                        shipReq: data.shipReq,
+                        shipName: data.delivery.receiverName,
+                        shipTel: data.delivery.receiverTel,
+                        shipAddr: data.delivery.receiverAddr,
+                        shipReq: data.delivery.shipReq,
                         orderDetails: data.orderDetails,
                         status: data.status,
                         totalPrice: data.totalPrice,
@@ -262,7 +264,7 @@ const OrderDetail = () => {
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs={12} sm={3} container direction="column" justifyContent="center">
                                 <Typography variant="subtitle2" sx={{ color: 'gray', marginRight: '8px' }}>
-                                    {String(order.id).padStart(5, '0')}
+                                    {String(order.orderId).padStart(5, '0')}
                                 </Typography>
                                 <Typography variant="h6">{formatDate(order.createdDate)}</Typography>
                             </Grid>

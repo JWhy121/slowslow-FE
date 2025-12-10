@@ -34,8 +34,9 @@ const Login = () => {
         navigate('/membership');
     };
 
-    const handleKakaoLogin = async () => {
-        window.location.href = 'http://localhost:8080/api/auth/kakao/login';
+    const handleKakaoLogin = () => {
+        // 백엔드 OAuth2 로그인 시작 URL로 이동
+        window.location.href = 'http://localhost:8080/oauth2/authorization/kakao';
     };
 
     const handleSubmit = async (e) => {
