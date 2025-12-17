@@ -58,7 +58,7 @@ const OrderDetail = () => {
                 .then((response) => {
                     const data = response.data;
                     console.log('Order Data:', data); // 응답 데이터를 콘솔에 출력
-                    console.log('Order Details:', data.delivery.receiverAddr); // orderDetails 출력
+
                     setOrder(data);
                     setFormData({
                         orderName: data.delivery.receiverName,
@@ -73,6 +73,8 @@ const OrderDetail = () => {
                         totalPrice: data.totalPrice,
                         userId: data.userId,
                     });
+
+                    console.log('배송주소 : ', formData.shipAddr); // orderDetails 출력
                 })
                 .catch((error) => {
                     setError(error);
@@ -326,22 +328,22 @@ const OrderDetail = () => {
                                     배송지
                                 </Typography>
                                 <Typography variant="body2" sx={{ mb: 1 }}>
-                                    {order.shipName}
+                                    {formData.shipName}
                                 </Typography>
                                 <Typography variant="body2" sx={{ mb: 1 }}>
-                                    {order.shipAddr}
+                                    {formData.shipAddr}
                                 </Typography>
                                 <Typography variant="body2" sx={{ mb: 2 }}>
-                                    {order.shipTel}
+                                    {formData.shipTel}
                                 </Typography>
                                 <Divider sx={{ my: 1, mb: 2 }} />
-                                <Typography variant="body2">요청사항: {order.shipReq}</Typography>
+                                <Typography variant="body2">요청사항: {formData.shipReq}</Typography>
                             </Grid>
                         </Grid>
 
                         <Divider sx={{ my: 2 }} />
                         <Box display="flex" justifyContent="center" mt={3}>
-                            {order.status === 'PENDING' ? (
+                            {formData.status === 'PENDING' ? (
                                 <>
                                     <Button
                                         variant="contained"
@@ -382,10 +384,10 @@ const OrderDetail = () => {
                                 </>
                             ) : (
                                 <Typography variant="h6" align="center">
-                                    {order.status === 'SHIPPING' && '배송중'}
-                                    {order.status === 'CANCELLED' && '취소 완료'}
-                                    {order.status === 'COMPLETED' && '배송 완료'}
-                                    {order.status === 'FAILED' && '주문 실패'}
+                                    {formData.status === 'SHIPPING' && '배송중'}
+                                    {formData.status === 'CANCELLED' && '취소 완료'}
+                                    {formData.status === 'COMPLETED' && '배송 완료'}
+                                    {formData.status === 'FAILED' && '주문 실패'}
                                 </Typography>
                             )}
                         </Box>
