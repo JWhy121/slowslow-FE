@@ -33,7 +33,7 @@ const ProductAdmin = () => {
     }, []);
 
     const fetchProducts = () => {
-        fetch('http://localhost:8080/product/all')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/product/all`)
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data);
@@ -44,21 +44,21 @@ const ProductAdmin = () => {
     };
 
     const fetchBrands = () => {
-        fetch('http://localhost:8080/brand/all')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/brand/all`)
             .then((response) => response.json())
             .then((data) => setBrands(data))
             .catch((error) => console.error('Error fetching brands:', error));
     };
 
     const fetchCategories = () => {
-        fetch('http://localhost:8080/category/all')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/category/all`)
             .then((response) => response.json())
             .then((data) => setCategories(data))
             .catch((error) => console.error('Error fetching categories:', error));
     };
 
     const handleAddProduct = (productDto) => {
-        fetch('http://localhost:8080/admin/product/create', {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/product/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const ProductAdmin = () => {
     };
 
     const handleUpdateProduct = (productDto) => {
-        fetch(`http://localhost:8080/admin/product/update/${productToEdit.id}`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/product/update/${productToEdit.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const ProductAdmin = () => {
     };
 
     const handleDeleteProduct = () => {
-        fetch(`http://localhost:8080/admin/product/delete/${deleteProductId}`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/product/delete/${deleteProductId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

@@ -38,7 +38,7 @@ const ConfirmDelete = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(
-                'http://localhost:8080/api/v1/delete', // 회원 탈퇴 요청을 보내는 엔드포인트
+                `${process.env.REACT_APP_API_BASE_URL}/api/v1/delete`, // 회원 탈퇴 요청을 보내는 엔드포인트
                 {
                     headers: {
                         Authorization: `${token}`,

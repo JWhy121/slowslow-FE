@@ -8,10 +8,22 @@ const BrandSidebar = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:8080/brand/all')
-            .then((response) => response.json())
-            .then((data) => setBrands(data))
-            .catch((error) => console.error('Error fetching data:', error));
+        const fetchBrands = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/brand/all`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                setBrands(Array.isArray(data) ? data : []);
+            } catch (error) {
+                console.error('Error fetching brands:', error);
+                setBrands([]);
+            }
+        };
+
+        fetchBrands();
     }, []);
 
     const filteredBrands = brands.filter((brand) => brand.brandName.toLowerCase().includes(searchTerm.toLowerCase()));

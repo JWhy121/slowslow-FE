@@ -40,7 +40,7 @@ function Membership() {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/membership', {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/membership`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

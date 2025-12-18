@@ -46,7 +46,7 @@ const OrderList = () => {
         console.log('Stored Token:', storedToken);
         if (storedToken) {
             axios
-                .get('http://localhost:8080/api/v1/mypage/orders', {
+                .get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/mypage/orders`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `${storedToken}`,

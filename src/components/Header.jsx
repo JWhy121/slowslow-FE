@@ -29,10 +29,20 @@ const Header = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/category/all')
-            .then((response) => response.json())
-            .then((data) => setCategories(data))
-            .catch((error) => console.error('Error fetching data:', error));
+        fetch('${process.env.REACT_APP_API_BASE_URL}/category/all')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setCategories(Array.isArray(data) ? data : []);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+                setCategories([]);
+            });
     }, []);
 
     // useEffect(() => {
@@ -109,16 +119,18 @@ const Header = () => {
                     <Button sx={{ color: 'white', fontWeight: 'bold' }} onClick={() => handleCategoryClick()}>
                         카테고리
                     </Button>
-                    {categories.slice(0, 4).map((category) => (
-                        <Typography
-                            variant="body2"
-                            sx={{ color: 'white', cursor: 'pointer', alignSelf: 'center', fontSize: '0.875rem' }}
-                            component={Link}
-                            to={`/category/${category.id}`}
-                        >
-                            {category.categoryName}
-                        </Typography>
-                    ))}
+                    {Array.isArray(categories) &&
+                        categories.slice(0, 4).map((category) => (
+                            <Typography
+                                key={category.id}
+                                variant="body2"
+                                sx={{ color: 'white', cursor: 'pointer', alignSelf: 'center', fontSize: '0.875rem' }}
+                                component={Link}
+                                to={`/category/${category.id}`}
+                            >
+                                {category.categoryName}
+                            </Typography>
+                        ))}
                 </Stack>
             </Box>
         </AppBar>

@@ -48,7 +48,7 @@ const OrderDetail = () => {
         console.log('Stored Token:', storedToken); // 토큰 값을 콘솔에 출력
         if (storedToken) {
             axios
-                .get(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, {
+                .get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/mypage/orders/${orderId}`, {
                     // URL에 /api/v1 추가
                     headers: {
                         'Content-Type': 'application/json',
@@ -96,12 +96,15 @@ const OrderDetail = () => {
         }
 
         try {
-            const response = await axios.delete(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `${storedToken}`,
-                },
-            });
+            const response = await axios.delete(
+                `${process.env.REACT_APP_API_BASE_URL}/api/v1/mypage/orders/${orderId}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `${storedToken}`,
+                    },
+                }
+            );
 
             alert('주문이 취소되었습니다.');
             setOrder({ ...order, status: 'CANCELLED' });
@@ -134,12 +137,16 @@ const OrderDetail = () => {
         }
 
         try {
-            const response = await axios.put(`http://localhost:8080/api/v1/mypage/orders/${orderId}`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `${storedToken}`,
-                },
-            });
+            const response = await axios.put(
+                `${process.env.REACT_APP_API_BASE_URL}/api/v1/mypage/orders/${orderId}`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `${storedToken}`,
+                    },
+                }
+            );
 
             const updatedOrder = response.data;
             setOrder(updatedOrder);

@@ -25,14 +25,14 @@ const BrandListAdmin = () => {
     const [brandToEdit, setBrandToEdit] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/brand/all')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/brand/all`)
             .then((response) => response.json())
             .then((data) => setBrands(data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
     const handleAddBrand = (brandName) => {
-        fetch('http://localhost:8080/admin/brand/post', {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/brand/post`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const BrandListAdmin = () => {
     };
 
     const handleUpdateBrand = (brandName) => {
-        fetch(`http://localhost:8080/admin/brand/edit/${brandToEdit.id}`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/brand/edit/${brandToEdit.id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const BrandListAdmin = () => {
     };
 
     const handleDeleteBrand = () => {
-        fetch(`http://localhost:8080/admin/brand/delete/${deleteBrandId}`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/admin/brand/delete/${deleteBrandId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const ProductDetail = () => {
     const role = localStorage.getItem('role');
 
     useEffect(() => {
-        fetch(`http://localhost:8080/product/${productId}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/product/${productId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

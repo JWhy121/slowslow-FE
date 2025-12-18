@@ -12,7 +12,7 @@ const BrandMainPage = () => {
 
     useEffect(() => {
         // 브랜드 정보 가져오기
-        fetch(`http://localhost:8080/brand/all`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/brand/all`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -31,7 +31,11 @@ const BrandMainPage = () => {
             });
 
         // 해당 브랜드 또는 전체 상품 정보 가져오기
-        fetch(brandId ? `http://localhost:8080/brand/${brandId}` : `http://localhost:8080/product/all`)
+        fetch(
+            brandId
+                ? `${process.env.REACT_APP_API_BASE_URL}/brand/${brandId}`
+                : `${process.env.REACT_APP_API_BASE_URL}/product/all`
+        )
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
