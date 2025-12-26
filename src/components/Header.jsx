@@ -29,7 +29,7 @@ const Header = () => {
     };
 
     useEffect(() => {
-        fetch('${process.env.REACT_APP_API_BASE_URL}/category/all')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/category/all`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
